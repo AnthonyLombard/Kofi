@@ -1,5 +1,8 @@
 {
   "name": "Kofi",
-  "integrations": {},
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
   "type": "angular"
 }
