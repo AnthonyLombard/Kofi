@@ -8,7 +8,7 @@
           <form [formGroup]="loginForm">
                 <ion-input formControlName="email"  type="text" placeholder="Email"></ion-input>
                 <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
-                <ion-button size="default" color="light" expand="block" [disabled]="!loginForm.valid" (click)="LoginTrigger()">Login</ion-button> 
+                <ion-button size="default" color="light" expand="block" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)">Login</ion-button> 
           </form>
         </ion-row>
       </ion-grid>

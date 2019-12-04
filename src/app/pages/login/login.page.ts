@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/user/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -8,7 +12,8 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loginForm : FormGroup;
+  public loginForm : FormGroup;
+  public loading: HTMLIonLoadingElement;
   errorMessages = {
     'email':[
       {type:'required', message:'Email is required...'},
@@ -23,8 +28,13 @@ export class LoginPage implements OnInit {
     ]
   }
 
+
   constructor(
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController,
+    private authService: AuthService,
+    private router: Router
   ){
     this.loginForm = this.formBuilder.group({
       password: new FormControl('',Validators.compose([
@@ -45,7 +55,27 @@ export class LoginPage implements OnInit {
   ngOnInit(): void {
     
   }
-  LoginTrigger(){
+  async loginUser(loginForm: FormGroup): Promise<void> {
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
   
+      const email = <string>loginForm.value.email;
+      const password = <string>loginForm.value.password;
+      this.authService.loginFirebase(email, password).then(
+        () => {
+          this.loading.dismiss().then(() => {
+            this.router.navigateByUrl('home');
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }],
+            });
+            await alert.present();
+          });
+        }
+      );  
   }
 }
