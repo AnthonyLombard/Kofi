@@ -37,7 +37,6 @@ export class AppComponent {
       measurementId: "G-Y2E297KS78"
     };
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
   }
 
   initializeApp() {

@@ -1,0 +1,20 @@
+ion-input{
+   padding-bottom: 30px;
+    font-size: 0.9em;
+    border-bottom: 1px solid #f1f1f1 !important;
+    --background: none !important;
+    /* height: 10%; */
+    /* width: 41%; */
+    max-width: 80vw; // this is applying perfectly
+    max-height: 10vh;
+}
+
+ion-content {
+    --background: #000 url("../assets/beans.jpg") no-repeat center center / cover;
+    filter: grayscale(100%);
+    filter: opacity(80%);
+}
+ion-input{
+    color:#fff;
+    padding:20px;
+}
