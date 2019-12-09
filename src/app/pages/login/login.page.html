@@ -10,6 +10,11 @@
                 <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
                 <ion-button size="default" color="light" expand="block" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)">Login</ion-button> 
           </form>
+
+          <div style="color:#fff; text-align: center;">
+          new to KOFI? <br>
+          <a style="color:#fff; text-decoration: underline;" (click)="navigateRegister()">click here to register</a>
+          </div>
         </ion-row>
       </ion-grid>
 </ion-content>

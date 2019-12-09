@@ -8,14 +8,14 @@ import 'firebase/firestore';
 })
 export class AuthService {
 
-  loginFirebase(
+  public loginFirebase(
     email: string,
     password: string
   ): Promise<firebase.auth.UserCredential> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
-  signupUser(email: string, password: string): Promise<any> {
+  public signupUser(email: string, password: string): Promise<any> {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -30,10 +30,10 @@ export class AuthService {
         throw new Error(error);
       });
   }
-  resetPassword(email:string): Promise<void> {
+  public resetPassword(email:string): Promise<void> {
     return firebase.auth().sendPasswordResetEmail(email);
   }
-  logoutUser():Promise<void> {
+  public logoutUser():Promise<void> {
     return firebase.auth().signOut();
   }
 

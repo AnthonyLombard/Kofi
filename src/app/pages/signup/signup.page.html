@@ -1,9 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="background-image">
+  <ion-grid style="height: 100%">
+      <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%; flex-direction: column">
+          <ion-spinner name="ios"></ion-spinner>
+          <img style="width:80%" src="assets/logo.png" alt="">
+          <form [formGroup]="signupForm">
+                <ion-input formControlName="email"  type="text" placeholder="Email"></ion-input>
+                <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+                <ion-button size="default" color="light" expand="block" [disabled]="!signupForm.valid" (click)="signUp(signupForm)">Register</ion-button> 
+          </form>
+        </ion-row>
+      </ion-grid>loginFirebase
 </ion-content>

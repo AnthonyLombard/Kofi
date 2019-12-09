@@ -5,7 +5,6 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -55,6 +54,10 @@ export class LoginPage implements OnInit {
   ngOnInit(): void {
     
   }
+  navigateRegister(){
+  this.router.navigateByUrl("signup");
+  }
+  
   async loginUser(loginForm: FormGroup): Promise<void> {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();
@@ -64,7 +67,7 @@ export class LoginPage implements OnInit {
       this.authService.loginFirebase(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
-            this.router.navigateByUrl('home');
+            this.router.navigateByUrl('shop');
           });
         },
         error => {
