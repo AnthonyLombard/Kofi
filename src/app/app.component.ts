@@ -3,6 +3,8 @@ import { Plugins } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
 import * as firebase from 'firebase/app';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 const { SplashScreen, StatusBar } = Plugins;
 
 @Component({

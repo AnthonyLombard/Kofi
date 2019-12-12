@@ -1,0 +1,26 @@
+<ion-header color="dark">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        ShopProduct
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let product of Products">
+    <ion-img [src]="product.image"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{product.category}}</ion-card-subtitle>
+      <ion-card-title>{{product.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+    <ion-button (click)="addCart(product)" expand="full" color="dark">ADD TO CART</ion-button>
+  </ion-card>
+</ion-content>
