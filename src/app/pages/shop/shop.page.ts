@@ -26,6 +26,7 @@ export class ShopPage implements OnInit {
   }
 
   addCart(product){
+   
     this.productService.addProduct(product);
   }
 }

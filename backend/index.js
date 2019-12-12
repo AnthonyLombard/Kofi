@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const port = 3121;
 const mongo = require("mongodb");
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuid/v1'); 
 const cors = require('cors')
 
 var url = "mongodb://localhost:27017/";
 
 app.use(cors())
+app.use(express.json()) 
 
 
 
@@ -27,11 +28,19 @@ mongo.connect(url,function(err,db){
     })
 })
 
-
 app.post('/addtocart', function (req, res) {
 console.log('====================================');
-console.log(req); 
-console.log('====================================');
+console.log(req.body); 
+console.log('===================================='); 
+res.send("200")
+
+mongo.connect(url,function(err,db){
+    if (err) throw err;
+    console.log("Adding to cart");
+    var dbo = db.db("Kofi")
+    dbo.collection("usercart").insertOne(req.body); 
+    })
+
 })
 
 
